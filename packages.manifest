@@ -1,2 +1,5 @@
 : 1
 location: libvulkan-headers/
+
+:
+location: libvulkan-hpp/

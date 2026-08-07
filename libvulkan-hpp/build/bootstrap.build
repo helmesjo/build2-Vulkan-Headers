@@ -1,0 +1,7 @@
+project = libvulkan-hpp
+
+using version
+using config
+using test
+using install
+using dist
