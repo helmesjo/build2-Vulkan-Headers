@@ -1,16 +1,18 @@
 : 1
 name: libvulkan-headers
-version: 0.1.0-a.0.z
+version: 1.4.359-a.0.z
 type: lib,binless
 language: c
-project: build2-Vulkan-Headers
-summary: vulkan-headers C library
-license: other: proprietary ; Not free/open source.
+project: vulkan-headers
+summary: The C headers for the Vulkan graphics API
+topics: graphics, api, c, vulkan
+license: Apache-2.0 OR MIT ; Apache License 2.0 or MIT License.
 description-file: README.md
 package-description-file: PACKAGE-README.md
-url: https://example.org/upstream
-email: upstream@example.org
-package-url: https://github.com/build2-packaging/build2-Vulkan-Headers
+url: https://github.com/KhronosGroup/Vulkan-Headers
+doc-url: https://docs.vulkan.org/
+src-url: https://github.com/KhronosGroup/Vulkan-Headers
+package-url: https://github.com/build2-packaging/Vulkan-Headers
 package-email: packaging@build2.org ; Mailing list.
 depends: * build2 >= 0.18.0
 depends: * bpkg >= 0.18.0
