@@ -1,1 +1,13 @@
-./: file{**}
+# Omit validusage.json (15MB of spec text, not needed by header consumers).
+#
+./: file{** -buildfile -validusage.json}
+
+# Same destination as upstream CMake:
+#   install(DIRECTORY registry DESTINATION ${CMAKE_INSTALL_DATADIR}/vulkan)
+# i.e. share/vulkan/registry/.
+#
+file{*}:
+{
+  install         = share/vulkan/registry/
+  install.subdirs = true
+}

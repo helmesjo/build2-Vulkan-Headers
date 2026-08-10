@@ -1,5 +1,12 @@
 intf_libs = # Interface dependencies.
-#import xxxx_libs += libhello%lib{hello}
+import intf_libs += libvulkan-headers%lib{vulkan-headers}
+
+./: lib{vulkan-hpp}
+
+# Experimental named modules. Separate target so header-only consumers are
+# not forced to compile them when the amalgamation has modules enabled.
+#
+./: lib{vulkan-hpp-module}: include = $cxx.features.modules
 
 lib{vulkan-hpp}: {hxx ixx txx}{**} $intf_libs
 
@@ -12,6 +19,32 @@ lib{vulkan-hpp}:
 {
   cxx.export.poptions = "-I$out_pfx" "-I$src_pfx"
   cxx.export.libs = $intf_libs
+}
+
+# The .cppm files are extra-symlinked into this directory so mxx{*}@./
+# has parallel src/out (the buildfile lives here, not in vulkan/, and
+# vulkan/ is a directory symlink into upstream/).
+#
+lib{vulkan-hpp-module}: mxx{vulkan vulkan_video} lib{vulkan-hpp}
+
+lib{vulkan-hpp-module}:
+{
+  bin.binless = true
+  cxx.export.libs = lib{vulkan-hpp}
+}
+
+# @./ is only valid on the left-hand side (pins a source file to src).
+#
+mxx{vulkan}@./:
+{
+  cxx.module_name = vulkan
+  install         = include/vulkan/
+}
+
+mxx{vulkan_video}@./:
+{
+  cxx.module_name = vulkan_video
+  install         = include/vulkan/
 }
 
 # Install recreating subdirectories.
