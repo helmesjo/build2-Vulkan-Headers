@@ -1,0 +1,4 @@
+import libs = libvulkan-hpp%lib{vulkan-hpp-module}
+
+./: exe{driver}: include = $cxx.features.modules
+exe{driver}: {hxx ixx txx cxx}{**} $libs testscript{**}
