@@ -1,34 +1,17 @@
-#include <sstream>
-#include <stdexcept>
-
-#include <vulkan-hpp.hpp>
+#include <vulkan/vulkan.h>
+#include <vulkan/vulkan.hpp>
 
 #undef NDEBUG
 #include <cassert>
 
+// Defined in vk_hpp.cpp (symlinked from upstream/tests/), which upstream
+// itself only compile-checks; call it here so it is actually exercised.
+//
+extern int test_version ();
+
 int main ()
 {
-  using namespace std;
-  using namespace vulkan_hpp;
-
-  // Basics.
-  //
-  {
-    ostringstream o;
-    say_hello (o, "World");
-    assert (o.str () == "Hello, World!\n");
-  }
-
-  // Empty name.
-  //
-  try
-  {
-    ostringstream o;
-    say_hello (o, "");
-    assert (false);
-  }
-  catch (const invalid_argument& e)
-  {
-    assert (e.what () == string ("empty name"));
-  }
+  assert (vk::makeApiVersion (0, 1, 0, 0) == VK_API_VERSION_1_0);
+  assert (test_version () == static_cast<int> (vk::makeApiVersion (1, 0, 0, 0)));
+  return 0;
 }
