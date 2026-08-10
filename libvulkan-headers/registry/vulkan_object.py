@@ -1,0 +1,1 @@
+../../upstream/registry/vulkan_object.py

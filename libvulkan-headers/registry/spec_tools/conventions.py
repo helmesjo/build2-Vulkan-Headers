@@ -1,0 +1,1 @@
+../../../upstream/registry/spec_tools/conventions.py

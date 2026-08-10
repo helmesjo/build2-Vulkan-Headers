@@ -1,0 +1,1 @@
+../../upstream/registry/base_generator.py

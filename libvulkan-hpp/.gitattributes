@@ -1,0 +1,2 @@
+include/vulkan symlink=dir
+include/vk_video symlink=dir
