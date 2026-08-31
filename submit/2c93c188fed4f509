@@ -1,0 +1,8 @@
+: 1
+name: libvulkan-headers
+version: 1.4.359
+type: lib,binless
+language: c
+project: vulkan-headers
+summary: The C headers for the Vulkan graphics API
+license: Apache-2.0 OR MIT; Apache License 2.0 or MIT License.
